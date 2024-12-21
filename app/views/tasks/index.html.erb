@@ -4,7 +4,13 @@
   <% @tasks.each do |task|  %>
     <li>
       <%= check_box_tag :completed, "t", task[:completed] %>
-      <%= link_to task[:title], show_path(task) %>
+      <%= link_to task[:title], task_path(task) %>
+      <%= link_to "🗑️", task_path(task),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     </li>
   <% end %>
 </ul>
+
+<div>
+  <%= link_to "Create a new task", tasks_new_path %>
+</div>
